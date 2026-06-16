@@ -1,0 +1,317 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Homeopathy Guide - A to Z</title>
+    <style>
+        /* Basic Reset & Font */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f8ff; color: #333; line-height: 1.6; }
+        
+        /* Header Styling */
+        header { background: linear-gradient(135deg, #006400, #228B22); color: white; text-align: center; padding: 2rem 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.1rem; opacity: 0.9; }
+        
+        /* Search Bar */
+        .search-container { max-width: 600px; margin: 1.5rem auto 0; position: relative; }
+        .search-container input { width: 100%; padding: 15px 20px; font-size: 1.1rem; border: none; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); outline: none; }
+        
+        /* Potency Guide Section */
+        .guide-section { background: white; max-width: 1200px; margin: 2rem auto; padding: 2rem; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .guide-section h2 { color: #006400; text-align: center; margin-bottom: 1.5rem; font-size: 2rem; }
+        .potency-cards { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .pot-card { background: #f9f9f9; border-left: 5px solid; padding: 1rem; border-radius: 8px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .pot-card h3 { margin-bottom: 0.5rem; }
+
+        /* Main Content Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem 2rem; }
+        .alphabet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        
+        /* Disease Card Styling */
+        .letter-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .letter-card:hover { transform: translateY(-5px); }
+        .letter-header { background: #228B22; color: white; padding: 1rem 1.5rem; font-size: 2rem; font-weight: bold; text-align: center; }
+        .card-content { padding: 1.5rem; }
+        
+        .disease-block { margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+        .disease-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .disease-title { color: #d9534f; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.8rem; }
+        
+        .medicine-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .medicine-item { background: #f8f9fa; padding: 8px 15px; border-radius: 20px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        
+        /* Potency Badges */
+        .potency { font-weight: bold; font-size: 0.8rem; padding: 3px 8px; border-radius: 12px; color: white; }
+        .pot-3x { background: #5cb85c; } /* Green - Low */
+        .pot-6x { background: #8fd19e; } /* Light Green - Low */
+        .pot-30c { background: #0275d8; } /* Blue - Medium */
+        .pot-200c { background: #f0ad4e; } /* Orange - High */
+        .pot-1m { background: #d9534f; } /* Red - Very High */
+        .pot-10m { background: #8b0000; } /* Dark Red - Extreme */
+        .pot-cm { background: #4a0080; } /* Purple - Highest */
+
+        /* Warning Footer */
+        .warning { background: #fff3cd; color: #856404; padding: 2rem; text-align: center; margin-top: 3rem; border-top: 4px solid #ffc107; }
+        .warning h3 { margin-bottom: 1rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .alphabet-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🐾 Animal Homeopathy Guide</h1>
+        <p>A to Z Diseases, Medicines & Potency (Power) in Simple Hinglish</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Bimari ya Dawai search karein (e.g., Parvovirus, Sulphur)...">
+        </div>
+    </header>
+
+    <!-- Potency Learning Section -->
+    <div class="guide-section">
+        <h2>📚 Potency (Power) Kya Hai?</h2>
+        <div class="potency-cards">
+            <div class="pot-card" style="border-color: #5cb85c;">
+                <h3>3x aur 6x <span class="potency pot-3x">3x</span> <span class="potency pot-6x">6x</span></h3>
+                <p>Yeh <b>kam power</b> wali dawaiyan hain. Yeh body ki physical weakness, haddiyo aur twacha ko majboot karne ke liye di jati hain.</p>
+            </div>
+            <div class="pot-card" style="border-color: #0275d8;">
+                <h3>30c <span class="potency pot-30c">30c</span></h3>
+                <p>Yeh <b>medium power</b> hai. Aam taur par naye (acute) aur halke bimariyon ke liye use hoti hai.</p>
+            </div>
+            <div class="pot-card" style="border-color: #f0ad4e;">
+                <h3>200c <span class="potency pot-200c">200c</span></h3>
+                <p>Yeh <b>tez (high) power</b> hai. Purani (chronic) ya tez bimariyon ke liye use hoti hai.</p>
+            </div>
+            <div class="pot-card" style="border-color: #d9534f;">
+                <h3>1m, 10m, cm <span class="potency pot-1m">1m</span> <span class="potency pot-10m">10m</span> <span class="potency pot-cm">cm</span></h3>
+                <p>Yeh <b>bahut zyada tez (very high)</b> power hai. Badi bimariyon ya body ke deep faults ko theek karne ke liye di jati hain.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main A-Z Content -->
+    <div class="container">
+        <div class="alphabet-grid" id="contentGrid">
+            <!-- JavaScript will inject content here -->
+        </div>
+    </div>
+
+    <div class="warning">
+        <h3>⚠️ Zaroori Chetavni (Important Disclaimer)</h3>
+        <p>Yeh website sirf jaankari (educational) ke liye hai. Yahan koi Dosage (matra) nahi batayi gayi hai. High potencies (1m, 10m, cm) ka istemal bahut gahrai se asar karti hai. <b>Bina Veterinary Homeopathic Doctor ki salah ke jaanvaron ko koi bhi dawai na dein, galat istemal jaan ki jaan le sakta hai.</b></p>
+    </div>
+
+    <script>
+        // Data Array (A to Z)
+        const data = [
+            { letter: "A", diseases: [
+                { name: "Anthrax (Gorakhti)", meds: [{m:"Anthracinum", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Lachesis", p:"200c"}, {m:"Carbo Vegetabilis", p:"30c"}] },
+                { name: "Abscess (Foda / Muhase)", meds: [{m:"Hepar Sulphuricum", p:"200c"}, {m:"Silicea", p:"6x"}, {m:"Belladonna", p:"30c"}, {m:"Myristica Sebifera", p:"30c"}] },
+                { name: "Allergies (Alerji / Khujli)", meds: [{m:"Apis Mellifica", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}, {m:"Sulphur", p:"200c"}, {m:"Natrum Muriaticum", p:"200c"}] }
+            ]},
+            { letter: "B", diseases: [
+                { name: "Bloat (Pet phoolna / Gases)", meds: [{m:"Carbo Vegetabilis", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Lycopodium", p:"200c"}, {m:"Chelidonium", p:"30c"}] },
+                { name: "Bovine Mastitis (Thana suh jana)", meds: [{m:"Phytolacca", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Silicea", p:"6x"}, {m:"Hepar Sulphuricum", p:"200c"}] },
+                { name: "Bronchitis (Khasi aur gala bharhna)", meds: [{m:"Antimonium Tartaricum", p:"30c"}, {m:"Ipecacuanha", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Spongia Tosta", p:"30c"}] }
+            ]},
+            { letter: "C", diseases: [
+                { name: "Canine Parvovirus (Bloody dast)", meds: [{m:"Arsenicum Album", p:"30c"}, {m:"Veratrum Album", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Carbo Vegetabilis", p:"30c"}] },
+                { name: "Constipation (Kabz)", meds: [{m:"Nux Vomica", p:"30c"}, {m:"Alumina", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Opium", p:"200c"}] },
+                { name: "Coccidiosis (Murgiyon ka dast)", meds: [{m:"Dioscorea", p:"30c"}, {m:"Mercurius Corrosivus", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Veratrum Album", p:"30c"}] }
+            ]},
+            { letter: "D", diseases: [
+                { name: "Dermatitis (Twacha ki bimari)", meds: [{m:"Sulphur", p:"200c"}, {m:"Graphites", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}, {m:"Petroleum", p:"30c"}] },
+                { name: "Diarrhea (Dast)", meds: [{m:"Aloe Socotrina", p:"30c"}, {m:"Podophyllum", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Chamomilla", p:"30c"}] },
+                { name: "Distemper (Kutton ki viral bimari)", meds: [{m:"Morbillinum", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Phosphorus", p:"200c"}] }
+            ]},
+            { letter: "E", diseases: [
+                { name: "Eczema (Chhip-chhip ke pani aana)", meds: [{m:"Graphites", p:"30c"}, {m:"Sulphur", p:"200c"}, {m:"Petroleum", p:"30c"}, {m:"Mezereum", p:"30c"}] },
+                { name: "Enteritis (Aant ka sujan)", meds: [{m:"Colocynth", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Mercurius Corrosivus", p:"30c"}] },
+                { name: "Eye Inflammation (Aankh ka sujan)", meds: [{m:"Euphrasia", p:"30c"}, {m:"Argentum Nitricum", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Belladonna", p:"30c"}] }
+            ]},
+            { letter: "F", diseases: [
+                { name: "Foot & Mouth Disease / FMD (Khur rog)", meds: [{m:"Borax", p:"30c"}, {m:"Mercurius Solubilis", p:"30c"}, {m:"Nitricum Acidum", p:"30c"}, {m:"Phytolacca", p:"30c"}] },
+                { name: "Fever (Bukhar)", meds: [{m:"Aconitum Napellus", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Gelsemium", p:"30c"}, {m:"Arsenicum Album", p:"30c"}] },
+                { name: "Feline Leukemia (Billiyon ka blood cancer)", meds: [{m:"Phosphorus", p:"1m"}, {m:"Arsenicum Album", p:"200c"}, {m:"Lachesis", p:"200c"}, {m:"Carbo Vegetabilis", p:"30c"}] }
+            ]},
+            { letter: "G", diseases: [
+                { name: "Gastroenteritis (Pet aur aant infection)", meds: [{m:"Arsenicum Album", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Colchicum", p:"30c"}, {m:"Ipecacuanha", p:"30c"}] },
+                { name: "Gangrene (Zinda maas sadna)", meds: [{m:"Secale Cornutum", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}, {m:"Lachesis", p:"200c"}] },
+                { name: "Gallstones (Pitta ki pathri)", meds: [{m:"Berberis Vulgaris", p:"30c"}, {m:"Chelidonium", p:"30c"}, {m:"Lycopodium", p:"200c"}, {m:"Carduus Marianus", p:"30c"}] }
+            ]},
+            { letter: "H", diseases: [
+                { name: "Heartworm (Dil mein krimi)", meds: [{m:"Cina", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Spigelia", p:"30c"}, {m:"Lachesis", p:"1m"}] },
+                { name: "Hemorrhage (Khoon ka bahna)", meds: [{m:"Hamamelis", p:"30c"}, {m:"Ipecacuanha", p:"30c"}, {m:"Secale Cornutum", p:"200c"}, {m:"Phosphorus", p:"200c"}, {m:"Erigeron", p:"30c"}] },
+                { name: "Hypocalcemia / Milk Fever (Dudh ki bukhar)", meds: [{m:"Calcarea Carbonica", p:"200c"}, {m:"Phosphorus", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Secale Cornutum", p:"200c"}] }
+            ]},
+            { letter: "I", diseases: [
+                { name: "Infectious Bovine Rhinotracheitis / IBR", meds: [{m:"Spongia Tosta", p:"30c"}, {m:"Aconitum Napellus", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Arsenicum Album", p:"30c"}] },
+                { name: "Indigestion (Ajirna / Pet kharab)", meds: [{m:"Pulsatilla", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}, {m:"Lycopodium", p:"200c"}] },
+                { name: "Iron Deficiency Anemia (Khoon ki kami)", meds: [{m:"Ferrum Phosphoricum", p:"6x"}, {m:"China", p:"30c"}, {m:"Natrum Muriaticum", p:"30c"}, {m:"Calcarea Carbonica", p:"200c"}] }
+            ]},
+            { letter: "J", diseases: [
+                { name: "Jaundice (Piliya)", meds: [{m:"Chelidonium", p:"30c"}, {m:"Carduus Marianus", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Lycopodium", p:"200c"}, {m:"Nux Vomica", p:"30c"}] },
+                { name: "Joint Pain / Arthritis (Jodo ka dard)", meds: [{m:"Rhus Toxicodendron", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Apis Mellifica", p:"30c"}, {m:"Calcarea Carbonica", p:"200c"}, {m:"Ledum Palustre", p:"30c"}] }
+            ]},
+            { letter: "K", diseases: [
+                { name: "Kennel Cough (Kutton ki sukhi khasi)", meds: [{m:"Drosera", p:"30c"}, {m:"Spongia Tosta", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Rumex", p:"30c"}, {m:"Ipecacuanha", p:"30c"}] },
+                { name: "Kidney Failure (Gurde kharab hona)", meds: [{m:"Apis Mellifica", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Terebinthina", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Lycopodium", p:"200c"}] },
+                { name: "Keratitis (Aankh ka white part suh jana)", meds: [{m:"Aconitum Napellus", p:"30c"}, {m:"Euphrasia", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Argentum Nitricum", p:"30c"}] }
+            ]},
+            { letter: "L", diseases: [
+                { name: "Leptospirosis (Pili bukhar/kidney infection)", meds: [{m:"Arsenicum Album", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Lachesis", p:"200c"}, {m:"Mercurius Solubilis", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}] },
+                { name: "Lice / Ticks (Joon / Machhar)", meds: [{m:"Staphysagria", p:"30c"}, {m:"Cina", p:"30c"}, {m:"Psorinum", p:"200c"}, {m:"Ledum Palustre", p:"30c"}] },
+                { name: "Lameness (Langdi chalna)", meds: [{m:"Symphytum", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}, {m:"Arnica Montana", p:"30c"}, {m:"Calcarea Fluorica", p:"6x"}] }
+            ]},
+            { letter: "M", diseases: [
+                { name: "Mange (Khad / Khujli wala rog)", meds: [{m:"Psorinum", p:"200c"}, {m:"Sulphur", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Staphysagria", p:"30c"}, {m:"Lycopodium", p:"200c"}] },
+                { name: "Mastitis (Thaney ka dard)", meds: [{m:"Bryonia Alba", p:"30c"}, {m:"Phytolacca", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Hepar Sulphuricum", p:"200c"}, {m:"Silicea", p:"6x"}] },
+                { name: "Metritis (Bachhedani ka infection)", meds: [{m:"Sepia", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Lachesis", p:"200c"}, {m:"Sabina", p:"30c"}, {m:"Ergotinum", p:"30c"}] }
+            ]},
+            { letter: "N", diseases: [
+                { name: "Newcastle Disease / Ranikhet (Murgiyon ki bimari)", meds: [{m:"Carbo Vegetabilis", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Spongia Tosta", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Ipecacuanha", p:"30c"}] },
+                { name: "Nephritis (Gurde ki sujan)", meds: [{m:"Terebinthina", p:"30c"}, {m:"Apis Mellifica", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Cantharis", p:"30c"}, {m:"Lycopodium", p:"200c"}] },
+                { name: "Nasal Discharge (Naak se paani aana)", meds: [{m:"Kali Bichromicum", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Mercurius Solubilis", p:"30c"}, {m:"Sambucus", p:"30c"}] }
+            ]},
+            { letter: "O", diseases: [
+                { name: "Otitis / Ear Infection (Kan ka infection)", meds: [{m:"Tellurium", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Silicea", p:"6x"}, {m:"Psorinum", p:"200c"}, {m:"Hepar Sulphuricum", p:"200c"}] },
+                { name: "Osteoporosis (Haddiyon mein kamzor)", meds: [{m:"Calcarea Phosphorica", p:"6x"}, {m:"Silicea", p:"6x"}, {m:"Symphytum", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}, {m:"Fluoricum Acidum", p:"30c"}] },
+                { name: "Ovarian Cysts (Andkosh ka thaila)", meds: [{m:"Lachesis", p:"200c"}, {m:"Apis Mellifica", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Sepia", p:"200c"}, {m:"Conium", p:"30c"}] }
+            ]},
+            { letter: "P", diseases: [
+                { name: "Pneumonia (Nimonia)", meds: [{m:"Bryonia Alba", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Antimonium Tartaricum", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}] },
+                { name: "Paralysis (Lahwang / Pakshaghat)", meds: [{m:"Causticum", p:"200c"}, {m:"Arnica Montana", p:"30c"}, {m:"Hypericum", p:"30c"}, {m:"Phosphorus", p:"1m"}, {m:"Lachesis", p:"200c"}] },
+                { name: "Pyometra (Kutton mein pus aana)", meds: [{m:"Pyrogenium", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Secale Cornutum", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Belladonna", p:"30c"}] }
+            ]},
+            { letter: "Q", diseases: [
+                { name: "Quittor (Ghodo ke khur mein infection)", meds: [{m:"Hepar Sulphuricum", p:"200c"}, {m:"Silicea", p:"6x"}, {m:"Myristica Sebifera", p:"30c"}, {m:"Arnica Montana", p:"30c"}] },
+                { name: "Quarter Evil / Black Quarter (Maweshi ka sujan)", meds: [{m:"Lachesis", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Anthracinum", p:"200c"}, {m:"Phytolacca", p:"30c"}] },
+                { name: "Quick/High Fever (Tez bukhar)", meds: [{m:"Aconitum Napellus", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Gelsemium", p:"30c"}, {m:"Ferrum Phosphoricum", p:"6x"}] }
+            ]},
+            { letter: "R", diseases: [
+                { name: "Rabies (Pagal rog)", meds: [{m:"Lyssinum", p:"1m"}, {m:"Belladonna", p:"30c"}, {m:"Hydrophobinum", p:"1m"}, {m:"Stramonium", p:"30c"}, {m:"Cantharis", p:"30c"}] },
+                { name: "Ringworm (Daad)", meds: [{m:"Bacillinum", p:"200c"}, {m:"Sulphur", p:"200c"}, {m:"Tellurium", p:"30c"}, {m:"Sepia", p:"30c"}, {m:"Chrysarobinum", p:"30c"}] },
+                { name: "Rickets (Haddiyon ka sahi na banna)", meds: [{m:"Silicea", p:"6x"}, {m:"Calcarea Phosphorica", p:"6x"}, {m:"Calcarea Carbonica", p:"200c"}, {m:"Phosphorus", p:"30c"}, {m:"Syphilinum", p:"1m"}] }
+            ]},
+            { letter: "S", diseases: [
+                { name: "Skin Disease (Twacha rog)", meds: [{m:"Sulphur", p:"200c"}, {m:"Psorinum", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Graphites", p:"30c"}, {m:"Natrum Muriaticum", p:"30c"}] },
+                { name: "Sprain (Moch)", meds: [{m:"Arnica Montana", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}, {m:"Ruta Graveolens", p:"30c"}, {m:"Symphytum", p:"30c"}, {m:"Bellis Perennis", p:"30c"}] },
+                { name: "Swelling (Suhna / Shoth)", meds: [{m:"Apis Mellifica", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Ledum Palustre", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}] }
+            ]},
+            { letter: "T", diseases: [
+                { name: "Tetanus (Dard rog / Lakwa)", meds: [{m:"Hypericum", p:"200c"}, {m:"Nux Vomica", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Lachesis", p:"200c"}, {m:"Cicuta Virosa", p:"30c"}] },
+                { name: "Tympany (Pet ka zyada phoolna)", meds: [{m:"Nux Vomica", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}, {m:"Colocynth", p:"30c"}, {m:"Lycopodium", p:"200c"}, {m:"China", p:"30c"}] },
+                { name: "Ticks (Joon ki bimari)", meds: [{m:"Ledum Palustre", p:"30c"}, {m:"Staphysagria", p:"30c"}, {m:"Cina", p:"30c"}, {m:"Sulphur", p:"200c"}, {m:"Psorinum", p:"200c"}] }
+            ]},
+            { letter: "U", diseases: [
+                { name: "Udder Infection (Thaney mein infection)", meds: [{m:"Phytolacca", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Silicea", p:"6x"}, {m:"Hepar Sulphuricum", p:"200c"}] },
+                { name: "Ulcers (Chhale / Foda)", meds: [{m:"Nitricum Acidum", p:"30c"}, {m:"Borax", p:"30c"}, {m:"Mercurius Solubilis", p:"30c"}, {m:"Lachesis", p:"200c"}, {m:"Carbo Vegetabilis", p:"30c"}] },
+                { name: "Urinary Tract Infection (UTI)", meds: [{m:"Cantharis", p:"30c"}, {m:"Apis Mellifica", p:"30c"}, {m:"Sarsaparilla", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Berberis Vulgaris", p:"30c"}] }
+            ]},
+            { letter: "V", diseases: [
+                { name: "Viral Fever (Viral bukhar)", meds: [{m:"Aconitum Napellus", p:"30c"}, {m:"Belladonna", p:"30c"}, {m:"Gelsemium", p:"30c"}, {m:"Eupatorium Perfoliatum", p:"30c"}, {m:"Rhus Toxicodendron", p:"30c"}] },
+                { name: "Vomiting (Ulti)", meds: [{m:"Ipecacuanha", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Phosphorus", p:"30c"}] }
+            ]},
+            { letter: "W", diseases: [
+                { name: "Wounds (Chot / Zakhm)", meds: [{m:"Calendula", p:"30c"}, {m:"Arnica Montana", p:"30c"}, {m:"Hypericum", p:"30c"}, {m:"Ledum Palustre", p:"30c"}, {m:"Staphysagria", p:"30c"}] },
+                { name: "Warts (Massa)", meds: [{m:"Thuja Occidentalis", p:"200c"}, {m:"Causticum", p:"30c"}, {m:"Nitricum Acidum", p:"30c"}, {m:"Staphysagria", p:"30c"}, {m:"Medorrhinum", p:"1m"}] },
+                { name: "Worms (Krimi / Kedua)", meds: [{m:"Cina", p:"30c"}, {m:"Teucrium", p:"30c"}, {m:"Natrum Muriaticum", p:"30c"}, {m:"Spigelia", p:"30c"}, {m:"Filix Mas", p:"3x"}] }
+            ]},
+            { letter: "X", diseases: [
+                { name: "Xerostomia (Sookha muh)", meds: [{m:"Pulsatilla", p:"30c"}, {m:"Nux Vomica", p:"30c"}, {m:"Bryonia Alba", p:"30c"}, {m:"Mercurius Solubilis", p:"30c"}] },
+                { name: "Xerophthalmia (Aankh sukh jana)", meds: [{m:"Euphrasia", p:"30c"}, {m:"Aconitum Napellus", p:"30c"}, {m:"Pulsatilla", p:"30c"}, {m:"Arsenicum Album", p:"30c"}] }
+            ]},
+            { letter: "Y", diseases: [
+                { name: "Yellow Fever / Jaundice (Piliya)", meds: [{m:"Carduus Marianus", p:"30c"}, {m:"Chelidonium", p:"30c"}, {m:"Phosphorus", p:"200c"}, {m:"Lycopodium", p:"200c"}, {m:"China", p:"30c"}] },
+                { name: "Yew Poisoning (Zeharile paudhon ka asar)", meds: [{m:"Nux Vomica", p:"30c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}, {m:"Ipecacuanha", p:"30c"}] }
+            ]},
+            { letter: "Z", diseases: [
+                { name: "Zygomatic Abscess (Gale ya muh ke paas foda)", meds: [{m:"Silicea", p:"6x"}, {m:"Hepar Sulphuricum", p:"200c"}, {m:"Belladonna", p:"30c"}, {m:"Myristica Sebifera", p:"30c"}, {m:"Mercurius Solubilis", p:"30c"}] },
+                { name: "Zoonotic Disease (Insaan aur jaanwar dono ko)", meds: [{m:"Psorinum", p:"10m"}, {m:"Thuja Occidentalis", p:"1m"}, {m:"Sulphur", p:"200c"}, {m:"Arsenicum Album", p:"30c"}, {m:"Carbo Vegetabilis", p:"30c"}] }
+            ]}
+        ];
+
+        // Function to create Potency Badge HTML
+        function getPotencyBadge(potency) {
+            let potClass = '';
+            if (potency === '3x') potClass = 'pot-3x';
+            else if (potency === '6x') potClass = 'pot-6x';
+            else if (potency === '30c') potClass = 'pot-30c';
+            else if (potency === '200c') potClass = 'pot-200c';
+            else if (potency === '1m') potClass = 'pot-1m';
+            else if (potency === '10m') potClass = 'pot-10m';
+            else if (potency === 'cm') potClass = 'pot-cm';
+            
+            return `<span class="potency ${potClass}">${potency}</span>`;
+        }
+
+        // Function to Render Content
+        function renderContent(filterText = '') {
+            const grid = document.getElementById('contentGrid');
+            grid.innerHTML = ''; // Clear previous content
+            
+            const lowerFilter = filterText.toLowerCase();
+
+            data.forEach(letterGroup => {
+                // Filter diseases based on search
+                const filteredDiseases = letterGroup.diseases.filter(disease => {
+                    const nameMatch = disease.name.toLowerCase().includes(lowerFilter);
+                    const medMatch = disease.meds.some(med => med.m.toLowerCase().includes(lowerFilter));
+                    return nameMatch || medMatch;
+                });
+
+                // If no match in this letter group, skip rendering the card
+                if (filteredDiseases.length === 0) return;
+
+                // Create Letter Card
+                const card = document.createElement('div');
+                card.className = 'letter-card';
+                
+                let diseasesHTML = '';
+                filteredDiseases.forEach(disease => {
+                    let medsHTML = disease.meds.map(med => 
+                        `<div class="medicine-item">${med.m} ${getPotencyBadge(med.p)}</div>`
+                    ).join('');
+                    
+                    diseasesHTML += `
+                        <div class="disease-block">
+                            <div class="disease-title">🩺 ${disease.name}</div>
+                            <div class="medicine-list">${medsHTML}</div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="letter-header">${letterGroup.letter}</div>
+                    <div class="card-content">${diseasesHTML}</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+
+            // If grid is empty after search
+            if(grid.innerHTML === '') {
+                grid.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:3rem; color:#888;">
+                    <h2>Koi result nahi mila 😔</h2>
+                    <p>Kripya doosra naam se search karein.</p>
+                </div>`;
+            }
+        }
+
+        // Initial Render
+        renderContent();
+
+        // Search Event Listener
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            renderContent(e.target.value);
+        });
+    </script>
+</body>
+</html>
